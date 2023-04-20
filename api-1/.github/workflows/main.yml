@@ -1,0 +1,31 @@
+name: Publish Package CI
+
+on:
+  push:
+    tags: '*'
+
+jobs:
+  publish-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          cache: 'npm'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@sdssds'
+
+      - name: Install dependencies 📦
+        run: npm ci --include=dev
+
+      - name: Build project
+        run: npm run build
+
+      - name: Publish Package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm publish
