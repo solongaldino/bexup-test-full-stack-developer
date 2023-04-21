@@ -8,7 +8,7 @@ const router = Router();
 
 const exemploController = container.resolve(ExemploController);
 router.post(
-  '/my-name-route',
+  '/send-brands-to-queue',
   joiValidateSchema(Schema.exemplo),
   exemploController.handle.bind(exemploController),
 );
