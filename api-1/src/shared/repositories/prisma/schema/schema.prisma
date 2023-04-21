@@ -8,20 +8,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id           String     @id @db.Char(36)
-  name         String     @db.VarChar(100)
-  email        String     @unique(map: "email_UNIQUE") @db.VarChar(100)
-  login        String     @unique(map: "login_UNIQUE") @db.VarChar(50)
-  password     String     @db.VarChar(255)
-  status       UserStatus @default(active)
-  attemptLogin Int        @default(0) @db.TinyInt
-  createdAt    DateTime   @default(now()) @db.DateTime(0)
-  updatedAt    DateTime?  @db.DateTime(0)
+model Brand {
+  id        String  @id @db.Char(36)
+  name      String  @db.VarChar(250)
+  code      Int
+  createdAt String  @db.VarChar(45)
+  Model     Model[]
 }
 
-enum UserStatus {
-  active
-  inactive
-  blockedAttemptLogin
+model Model {
+  id        String   @id @db.Char(36)
+  brandId   String   @db.Char(36)
+  name      String   @db.VarChar(600)
+  code      Int
+  createdAt DateTime @db.DateTime(0)
+  Brand     Brand    @relation(fields: [brandId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_model_Brand")
+
+  @@index([brandId], map: "fk_model_Brand_idx")
 }

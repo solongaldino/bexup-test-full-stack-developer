@@ -1,1 +1,1 @@
-export {default as RegisterBrandsUseCase } from './RegisterBrandsUseCase';
+export { default as RegisterBrandsUseCase } from './RegisterBrandsUseCase';

@@ -6,12 +6,12 @@ import { inject, singleton } from 'tsyringe';
 export default class RegisterBrandsController {
   constructor(
     @inject('RegisterBrandsUseCase')
-    private registerbrandsUseCase: IRegisterBrandsUseCase,
+    private registerBrandsUseCase: IRegisterBrandsUseCase,
   ) {}
 
   public async handle(req: Request, res: Response, next: NextFunction) {
     try {
-      await this.registerbrandsUseCase.run({});
+      await this.registerBrandsUseCase.run({});
 
       return res.status(201).send();
     } catch (error) {

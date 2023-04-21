@@ -1,10 +1,5 @@
-import IUserRepository from './interfaces/IUserRepository';
-
-export { IUserRepository };
-
-import UserRepository from './implementations/UserRepository';
-
-export { UserRepository };
+export { default as BrandRepository } from './implementations/BrandRepository';
+export { default as BrandRepositoryInterface } from './interfaces/BrandRepositoryInterface';
 
 import { PrismaClient } from '@prisma/client';
 import { TPrismaClientProvider } from './@types';
