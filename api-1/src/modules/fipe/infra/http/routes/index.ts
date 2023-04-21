@@ -1,16 +1,10 @@
 import { Router } from 'express';
 import { container } from 'tsyringe';
-import { Schema } from '../schemes';
-import { ExemploController } from '../controllers';
-import { joiValidateSchema } from '@shared/infra/http/middlewares';
+import { RegisterBrandsController } from '../controllers';
 
 const router = Router();
 
-const exemploController = container.resolve(ExemploController);
-router.post(
-  '/send-brands-to-queue',
-  joiValidateSchema(Schema.exemplo),
-  exemploController.handle.bind(exemploController),
-);
+const registerBrandsController = container.resolve(RegisterBrandsController);
+router.post('/register-brands', registerBrandsController.handle.bind(registerBrandsController));
 
 export { router as Routes };
