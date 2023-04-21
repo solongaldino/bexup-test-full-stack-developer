@@ -3,6 +3,6 @@ import { Routes } from './infra/http/routes';
 
 const router = Router();
 
-router.use('/users', Routes);
+router.use('/fipe', Routes);
 
-export { router as UsersRoutes };
+export { router as FipeRoutes };
