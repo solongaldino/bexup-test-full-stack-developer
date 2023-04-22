@@ -1,4 +1,4 @@
-import { FipeHttpClientInterface } from '@modules/fipe/httpClients/interfaces';
+import { FipeHttpClientInterface } from '@modules/brands/httpClients/interfaces';
 import { ApiError } from '@shared/utils';
 import { inject, injectable } from 'tsyringe';
 import {

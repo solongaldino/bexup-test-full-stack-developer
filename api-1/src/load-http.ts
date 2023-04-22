@@ -1,7 +1,7 @@
 console.info('[START] - Load modules HTTP\r\n');
 import express from 'express';
 import cors from 'cors';
-import { FipeRoutes } from '@modules/fipe';
+import { BrandsRoutes } from '@modules/brands';
 import { PagesRoutes } from '@shared/infra/http/pages';
 import { EnvVariables, Logger } from '@shared/utils';
 import { errorHandlerMiddleware, morganMiddleware } from '@shared/infra/http/middlewares';
@@ -16,7 +16,7 @@ app.use(cors());
 
 app.use(morganMiddleware);
 
-app.use('/', FipeRoutes);
+app.use('/', BrandsRoutes);
 app.use('/', PagesRoutes);
 
 app.use(errorHandlerMiddleware);
