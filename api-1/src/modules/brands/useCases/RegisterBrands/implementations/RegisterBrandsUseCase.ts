@@ -36,23 +36,24 @@ export default class RegisterBrandsUseCase implements IRegisterBrandsUseCase {
       const convertedPayload = JSON.stringify(item);
       const body = Buffer.from(convertedPayload).toString('base64');
 
-      client.createTask({
+      const [response] = await client.createTask({
         parent,
         task: {
           httpRequest: {
             httpMethod: 'POST',
             url: config.url,
-            oidcToken: {
-              serviceAccountEmail: config.email,
-              audience: new URL(config.url).origin,
-            },
             headers: {
               'Content-Type': 'application/json',
             },
             body,
+            oidcToken: {
+              serviceAccountEmail: config.email,
+            },
           },
         },
       });
+
+      console.log(response);
     }
   }
 }
