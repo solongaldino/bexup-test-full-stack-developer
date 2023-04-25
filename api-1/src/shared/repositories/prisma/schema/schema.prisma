@@ -4,25 +4,25 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Brand {
-  id        String  @id @db.Char(36)
-  name      String  @db.VarChar(250)
-  code      Int
-  createdAt String  @db.VarChar(45)
-  Model     Model[]
+  id    String  @id @db.Char(36)
+  name  String  @db.VarChar(250)
+  code  Int
+  Model Model[]
+
+  @@map("brand")
 }
 
 model Model {
-  id        String   @id @db.Char(36)
-  brandId   String   @db.Char(36)
-  name      String   @db.VarChar(600)
-  code      Int
-  createdAt DateTime @db.DateTime(0)
-  Brand     Brand    @relation(fields: [brandId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_model_Brand")
+  id       String @id @db.Char(36)
+  brand_id String @db.Char(36)
+  name     String @db.VarChar(250)
+  code     Int
+  Brand    Brand  @relation(fields: [brand_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_model_brand")
 
-  @@index([brandId], map: "fk_model_Brand_idx")
+  @@map("model")
 }

@@ -21,7 +21,10 @@ export default class ListModelsByBrandUseCase implements IListModelsByBrandUseCa
   }: IListModelsByBrandUseCaseDTO): Promise<IListModelsByBrandUseCaseResponseDTO> {
     const foundBrand = await this.brandRepository.findFirst({
       where: {
-        name: brandName,
+        name: {
+          contains: brandName,
+          mode: 'insensitive',
+        },
       },
     });
 
@@ -29,7 +32,7 @@ export default class ListModelsByBrandUseCase implements IListModelsByBrandUseCa
 
     return await this.modelRepository.findMany({
       where: {
-        brandId: foundBrand.id,
+        brand_id: foundBrand.id,
       },
     });
   }

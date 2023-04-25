@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS public.brand (
+  id  CHAR(36) PRIMARY KEY,
+  name VARCHAR(250) NOT NULL,
+  code INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS public.model (
+  id  CHAR(36) PRIMARY KEY,
+  brand_id CHAR(36) NOT NULL,
+  name VARCHAR(250) NOT NULL,
+  code INT NOT NULL,
+  CONSTRAINT fk_model_brand
+    FOREIGN KEY (brand_id)
+    REFERENCES brand (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
