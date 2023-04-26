@@ -24,7 +24,7 @@
 
 ## Sobre o Projeto
 
-Aplicação desenvolvida para atender os requisitos de um teste para uma vaga de desenvolvedor full-satck Sr, o escopo aborda o consumo da tabela fipe via api1 Nodejs, solicitando a listagem de marcas e procesando uma a uma em uma fila do GCP Cloud Task, assim o payload da fila pode ser consumindo por uma api2, no qual foi implantado uma função lambda no GCP Cloud Functions que manipula os dados e salva no PostgresSQL. O front contruido com Vueify consome a ap1 listando modelos a partir de uma marca selecionada.
+Aplicação desenvolvida para atender aos requisitos de um teste para uma vaga de desenvolvedor full-stack sênior. O escopo aborda o consumo da tabela FIPE via API 1 Node.js, solicitando a listagem de marcas e processando uma a uma em uma fila do GCP Cloud Task. Assim, o payload da fila pode ser consumido por uma API 2, na qual foi implantada uma função lambda no GCP Cloud Functions que manipula os dados e salva no PostgresSQL. O frontend construído com Vuetify consome a API 1, listando modelos a partir de uma marca selecionada.
 
 Api1
 
