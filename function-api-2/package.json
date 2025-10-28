@@ -1,8 +1,8 @@
 {
   "dependencies": {
     "@google-cloud/functions-framework": "^3.0.0",
-    "axios": "0.26.0",
-    "uid": "2.0.0",
-    "pg": "8.10.0"
+    "axios": "^0.26.0",
+    "pg": "8.10.0",
+    "uid": "2.0.0"
   }
 }
